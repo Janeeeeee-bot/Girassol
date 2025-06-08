@@ -3,29 +3,41 @@
   <head>
     <title>Amor AR</title>
     <meta charset="utf-8">
+
+    <!-- Carrega o framework A-Frame (para realidade virtual e aumentada em 3D) -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+    <!-- Carrega o AR.js (biblioteca para realidade aumentada com marcadores) -->
     <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
   </head>
+
   <body style="margin: 0; overflow: hidden;">
+    <!-- Cena principal da aplicação AR -->
     <a-scene 
       embedded 
-      arjs="sourceType: webcam; debugUIEnabled: false;"
-      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; debugUIEnabled: false;"  <!-- Usa webcam como entrada de vídeo -->
+      vr-mode-ui="enabled: false"                         <!-- Remove o botão de modo VR -->
     >
-      <!-- Câmera -->
+
+      <!-- Câmera que será controlada pela AR.js -->
       <a-entity camera></a-entity>
 
-      <!-- Marcador personalizado: girassol -->
+      <!-- Marcador personalizado (.patt) armazenado na pasta 'marcadores' -->
       <a-marker type="pattern" url="marcadores/padrão-imagem.patt">
+        
+        <!-- Imagem renderizada quando o marcador for detectado -->
+        <!-- Aqui é onde você altera para o que quiser exibir sobre o marcador -->
         <a-image 
-          src="pattern-imagem.png"
-          position="0 1 0"
-          rotation="-90 0 0"
-          height="1"
-          width="1"
-          material="side: double">
+          src="imagem.png"                      <!-- Caminho da imagem que será exibida (essa é a imagem correta a ser mostrada) -->
+          position="0 1 0"                      <!-- Posição no espaço 3D em relação ao marcador -->
+          rotation="-90 0 0"                    <!-- Rotação para a imagem ficar "de pé" no marcador -->
+          height="1"                            <!-- Altura da imagem -->
+          width="1"                             <!-- Largura da imagem -->
+          material="side: double">              <!-- Renderiza a imagem dos dois lados (frente e verso) -->
         </a-image>
+
       </a-marker>
+
     </a-scene>
-  </body>
+  </body>
 </html>
